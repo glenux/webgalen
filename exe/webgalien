@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'webgalien'
+
+Webgalien::Cli.start(ARGV)
+

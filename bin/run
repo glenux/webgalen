@@ -1,0 +1,20 @@
+#!/bin/sh
+
+
+# --restart always \
+# docker run -d \
+# 	--rm \
+# 	--name casperjs-daemon \
+# 	-v $(pwd):/home/casperjs-tests \
+# 	vitr/casperjs
+	 #--engine=slimerjs \
+
+export PATH="$(npm bin):$PATH"
+$(npm bin)/casperjs \
+	--log-level=debug \
+	--engine=slimerjs \
+	./download.js \
+	"URL"
+
+# docker exec casperjs-daemon phantomjs download.js "URL"
+# docker stop casperjs-daemon

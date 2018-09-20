@@ -1,0 +1,18 @@
+# platform options: linux32, linux64, mac64, win32
+PLATFORM=linux64
+
+# the directory to install the chromedriver binary in
+INSTALLATION_DIRECTORY=~/bin/
+# create it if necessary
+mkdir -p $INSTALLATION_DIRECTORY
+# and add it to PATH
+export PATH="$INSTALLATION_DIRECTORY:$PATH"
+# and add the PATH modification to ~/.bashrc
+echo 'export PATH="$INSTALLATION_DIRECTORY:$PATH"' >> ~/.bashrc
+
+# automatically find the latest version
+VERSION=$(curl http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+
+# download and extract the latest version
+curl http://chromedriver.storage.googleapis.com/$VERSION/chromedriver_$PLATFORM.zip \
+| bsdtar -xvf - -C $INSTALLATION_DIRECTORY

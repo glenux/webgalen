@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+ROOTDIR="$(cd "$(dirname "$0")/.." || exit 1 ; pwd)"
+
+cd "$ROOTDIR"
+
+npm install
+
+docker pull vitr/casperjs

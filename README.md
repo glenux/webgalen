@@ -2,6 +2,18 @@
 
 A tool to dissect of websites (tribute to [Galen of Pergamon](https://en.wikipedia.org/wiki/Galen))
 
+It is able to :
+-  crawl websites to create a sitemap, 
+- uses the sitemap to create full page screenshots
+
+## Roadmap
+
+- device profiles selection for screenshots (:warning: work in progress/unstable)
+- compare screenshots to produce a diff (i already have a fully fonctional side-project for that, waiting to be integrated and automated in webgalen)
+- annotate screenshots (define a bounding-box => add comment + red/green figures like the ones on trello => produce screenshot slices)
+- push annotation + slices on a project management tool (ex: trello, redmine, etc.)
+- use annotation bounding-box + diff to detect which comments are involved in a diff (modifié)
+
 ## Prerequisites
 
 Install a few tools

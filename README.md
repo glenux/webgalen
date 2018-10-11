@@ -1,6 +1,6 @@
 # Webgalen
 
-A tool to dissect of websites (tribute to Galen of Pergamon)
+A tool to dissect of websites (tribute to [Galen of Pergamon](https://en.wikipedia.org/wiki/Galen))
 
 ## Prerequisites
 

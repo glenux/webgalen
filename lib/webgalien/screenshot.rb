@@ -1,16 +1,19 @@
 
 module Webgalien 
   class Screenshot 
-    def self.start(urls:, output_path:)
+    def self.start(sitemap:, output_path: , device:, orientation:)
+      config = YAML.load File.open(sitemap)
+      urls = config['pages']
+
       # Start workpools
       cores = Celluloid.cores
       screenshot_pool = ScreenshotActor.pool(
         size: cores, 
-        args: { output_path: output_path }
+        args: [ output_path ]
       )
       crop_pool = CropPngActor.pool(
         size: cores, 
-        args: { output_path: output_path }
+        args: [ output_path ]
       )
 
       futures = 

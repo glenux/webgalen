@@ -8,6 +8,10 @@ module Webgalien
   class ScreenshotActor
     include Celluloid
 
+    def initialize(output_path)
+      @output_path = output_path
+    end
+
     def perform(future_work)
       driver = initialize_selenium_driver
 
@@ -15,12 +19,20 @@ module Webgalien
       work.shift!
 
       url = work.input[:url]
-      # Start selenium work
-      # platform_login driver
+      
       # Go to wanted page
-      driver.manage.window.resize_to(1440, 8000)
+      driver.manage.window.resize_to(1440, 900)
       puts "(#{work.id}) loading page #{url}"
       driver.navigate.to url
+
+      puts "(#{work.id}) waiting DOM stability"
+      wait_dom_stability(driver)
+
+      # get page size
+      element = driver.find_element(:css, "body")
+      height = element.size.height.to_i + 1
+      puts "(#{work.id}) resizing to 1440x#{height}"
+      driver.manage.window.resize_to(1440, height)
 
       puts "(#{work.id}) waiting DOM stability"
       wait_dom_stability(driver)
@@ -37,9 +49,9 @@ module Webgalien
         y: 0 # location.y.to_i
       }
 
-      puts "(#{work.id}) saving page"
-      FileUtils.mkdir_p(TMP_PREFIX)
-      tmp_path = File.join(TMP_PREFIX, 'capture-' + work.id.to_s + '.png')
+      tmp_path = File.join(@output_path, 'capture-' + work.id.to_s + '.png')
+      puts "(#{work.id}) saving page to #{tmp_path}"
+      FileUtils.mkdir_p(@output_path)
       driver.save_screenshot tmp_path
 
       driver.quit
@@ -54,12 +66,22 @@ module Webgalien
     private
 
     def initialize_selenium_driver
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.read_timeout = 120
+      client.open_timeout = 120
+
       options = Selenium::WebDriver::Chrome::Options.new
       options.add_argument('--headless')
       options.add_argument('--disable-gpu')
+      options.add_argument('--dns-prefetch-disable')
       options.add_argument("--user-agent=#{USER_AGENT}")
 
-      Selenium::WebDriver.for :chrome, options: options
+      # driver.timeout = 90 # instead of the default 60
+      Selenium::WebDriver.for(
+        :chrome, 
+        options: options,
+        http_client: client
+      )
     end
 
     # wait for DOM structure to be stabilizer for 5 consecutive tries

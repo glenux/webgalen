@@ -1,4 +1,6 @@
 
+require 'table_print'
+
 module Webgalien 
   class Cli < Thor 
     class_option :'user-agent',
@@ -6,32 +8,57 @@ module Webgalien
       banner: 'USER-AGENT',
       type: :string,
       desc: 'choose user agent (default Mozilla)'
+    option :output,
+      aliases: '-o',
+      banner: 'OUTPUT-FILE',
+      type: :string,
+      default: 'sitemap.yml',
+      desc: 'where sitemap will be produced (default: sitemap.yml)'
 
     desc 'sitemap URL FILE', 'crawl site and export sitemap'
-    def sitemap url, file 
+    def sitemap url
+      Sitemap.start(
+        url: url,
+        output: options['output']
+      )
     end
 
     desc 'screenshot FILE', 'take screenshots for each page'
+    option :device, 
+      aliases: '-d',  
+      banner: 'DEVICE',
+      type: :string,
+      desc: 'set device from "list-devices" (default "desktop")'
     option :profile, 
-      aliases: '-p',  
-      banner: 'PROFILE',
+      aliases: '-r',  
+      banner: '[portrait|landscape]',
       type: :string,
-      desc: 'choose device profile / resolution (default 1440x900 on desktop pc)'
-    option :output,
+      desc: 'choose device orientation (default "portrait")'
+    option :"output-path",
       aliases: '-o',
-      banner: 'OUTPUT-DIRECTORY',
+      banner: 'OUTPUT-PATH',
       type: :string,
-      default: '.',
-      desc: 'where resulting content will be produced'
+      default: 'cache',
+      desc: 'directory where resulting content will be produced'
 
-    def screenshot file
-      config = YAML.load File.open(file)
-      prefixed_urls = config['pages'].map {|u| config['root'] + u }
-
+    def screenshot sitemap
+      if not Devices.exist?(options['device']) then
+        STDERR.puts "ERROR: device #{options['device']} does not exist"
+        exit 1
+      end
       Screenshot.start(
-        urls: prefixed_urls,
-        output_path: options['output']
+        sitemap: sitemap, 
+        output_path: options['output-path'],
+        device: options['device'],
+        orientation: options['orientation']
       )
+    end
+
+
+    desc 'list-devices', 'list available profiles'
+    def list_devices
+      # from https://mediag.com/news/popular-screen-resolutions-designing-for-all/
+      Devices.display_list
     end
   end
 end

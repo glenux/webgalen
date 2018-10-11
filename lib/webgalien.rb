@@ -2,6 +2,7 @@
 # Load external dependencies
 require 'thor'
 require 'celluloid/current'
+require 'mechanize'
 require 'selenium-webdriver'
 require 'yaml'
 require 'thor'
@@ -15,6 +16,7 @@ require 'webgalien/actors/work_actor'
 
 require 'webgalien/screenshot'
 require 'webgalien/sitemap'
+require 'webgalien/devices'
 
 # Load cli
 require 'webgalien/cli'

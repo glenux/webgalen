@@ -1,5 +1,5 @@
 
-module Webgalien 
+module Webgalen 
   class Work
     attr_reader :id, :input, :artefacts
     attr_accessor :output

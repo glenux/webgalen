@@ -4,7 +4,7 @@ USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) ' \
 # configure the driver to run in headless mode
 # Selenium::WebDriver.logger.level =
 
-module Webgalien 
+module Webgalen 
   class ScreenshotActor
     include Celluloid
 

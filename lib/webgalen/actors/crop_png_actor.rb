@@ -1,6 +1,6 @@
 
 # Actor for cropping png
-module Webgalien 
+module Webgalen 
 class CropPngActor
   include Celluloid
 

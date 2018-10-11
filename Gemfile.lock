@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    webgalien (0.1.0)
+    webgalen (0.1.0)
       celluloid (~> 0.17.3)
       colorize (~> 0.8.1)
       mechanize (~> 2.7)
@@ -82,7 +82,7 @@ DEPENDENCIES
   minitest
   rake
   rasem (~> 0.7.1)
-  webgalien!
+  webgalen!
 
 BUNDLED WITH
    1.16.0

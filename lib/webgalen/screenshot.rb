@@ -1,5 +1,5 @@
 
-module Webgalien 
+module Webgalen 
   class Screenshot 
     def self.start(sitemap:, output_path: , device:, orientation:)
       config = YAML.load File.open(sitemap)

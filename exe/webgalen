@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'webgalen'
+
+Webgalen::Cli.start(ARGV)
+

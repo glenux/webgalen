@@ -1,7 +1,7 @@
 
 require 'table_print'
 
-module Webgalien 
+module Webgalen 
   class Cli < Thor 
     class_option :'user-agent',
       aliases: '-ua',

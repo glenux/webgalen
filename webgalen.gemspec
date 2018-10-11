@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'webgalien/version'
+require 'webgalen/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "webgalien"
-  spec.version       = Webgalien::VERSION
+  spec.name          = "webgalen"
+  spec.version       = Webgalen::VERSION
   spec.authors       = ["Glenn Y. Rolland"]
   spec.email         = ["glenux@glenux.net"]
   spec.summary       = %q{Use GIT logs to give an estimation of spent time & costs of your projects.}
   spec.description   = %q{Use GIT logs to give an estimation of spent time & costs of your projects.}
-  spec.homepage      = "https://github.com/glenux/webgalien"
+  spec.homepage      = "https://github.com/glenux/webgalen"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

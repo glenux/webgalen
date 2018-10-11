@@ -1,6 +1,6 @@
 require 'csv'
 
-module Webgalien 
+module Webgalen 
   class Devices
     PROFILES_CSV = <<-MARK
       laptop, 1440, 900, computer, "x"

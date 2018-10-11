@@ -1,5 +1,5 @@
 
-module Webgalien 
+module Webgalen 
   class Sitemap 
     def self.start(url:, output:)
       puts "Loading #{url}"

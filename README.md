@@ -14,15 +14,15 @@ Increase memory in imagemagick policy `/etc/ImageMagick-6/policy.xml`
 
 ## Usage
 
-$ be exe/webgalen
-Commands:
-  webgalen help [COMMAND]    # Describe available commands or one specific command
-  webgalen list-devices      # list available profiles
-  webgalen screenshot FILE   # take screenshots for each page
-  webgalen sitemap URL FILE  # crawl site and export sitemap
+    $ be exe/webgalen
+    Commands:
+      webgalen help [COMMAND]    # Describe available commands or one specific command
+      webgalen list-devices      # list available profiles
+      webgalen screenshot FILE   # take screenshots for each page
+      webgalen sitemap URL FILE  # crawl site and export sitemap
 
-Options:
-  -ua, [--user-agent=USER-AGENT]  # choose user agent (default Mozilla)
+    Options:
+      -ua, [--user-agent=USER-AGENT]  # choose user agent (default Mozilla)
 
 
 ## Contributing

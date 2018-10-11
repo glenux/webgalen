@@ -6,9 +6,9 @@ It is able to :
 -  crawl websites to create a sitemap, 
 - uses the sitemap to create full page screenshots
 
-## Roadmap
+## Roadmap (:warning: work in progress/unstable)
 
-- device profiles selection for screenshots (:warning: work in progress/unstable)
+- device profiles selection for screenshots 
 - compare screenshots to produce a diff (i already have a fully fonctional side-project for that, waiting to be integrated and automated in webgalen)
 - annotate screenshots (define a bounding-box => add comment + red/green figures like the ones on trello => produce screenshot slices)
 - push annotation + slices on a project management tool (ex: trello, redmine, etc.)

@@ -4,7 +4,7 @@ A tool to dissect of websites (tribute to [Galen of Pergamon](https://en.wikiped
 
 It is able to :
 -  crawl websites to create a sitemap, 
-- uses the sitemap to create full page screenshots
+- uses the sitemap to create website screenshots (full page length)
 
 ## Roadmap (:warning: work in progress/unstable)
 
